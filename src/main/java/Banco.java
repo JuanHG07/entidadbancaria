@@ -13,6 +13,10 @@ public class Banco {
         this.billeterasVirtuales = billeterasVirtuales;
     }
 
+    public void registrarUsuario(Usuario usuario){
+        usuarios.add(usuario);
+    }
+
     public String getNombre() {
         return nombre;
     }
