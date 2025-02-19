@@ -14,9 +14,9 @@ public class Banco {
     }
 
     public void registrarUsuario(Usuario usuario){
-        if(validarUsuario == false){
+        if(validarUsuario(usuario.getCedula()) == false){
             usuarios.add(usuario);
-
+            
         }
     }
 
@@ -26,6 +26,7 @@ public class Banco {
             if (usuario.getCedula().equals(cedula)){
                 existencia = true;
             }
+
         }
         return existencia;
     }
