@@ -14,8 +14,23 @@ public class Banco {
     }
 
     public void registrarUsuario(Usuario usuario){
-        usuarios.add(usuario);
+        if(validarUsuario == false){
+            usuarios.add(usuario);
+
+        }
     }
+
+    public boolean validarUsuario(String cedula){
+        boolean existencia = false;
+        for(Usuario usuario : usuarios){
+            if (usuario.getCedula().equals(cedula)){
+                existencia = true;
+            }
+        }
+        return existencia;
+    }
+
+
 
     public String getNombre() {
         return nombre;
