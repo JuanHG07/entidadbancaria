@@ -4,7 +4,6 @@ public enum categoriaTransaccion {
     FACTURAS,
     GASOLINA,
     ROPA,
-    COMIDA,
-    SUSCRIPCIONBRAZZERS
+    COMIDA
 
     }
