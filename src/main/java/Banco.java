@@ -81,7 +81,7 @@ public class Banco {
             imprimir(billeteraVirtual.toString());
         }
         else{
-            throw new Exception("No se encotro la billetera buscada");
+            throw new Exception("No se encontro la billetera buscada");
         }
     }
 
