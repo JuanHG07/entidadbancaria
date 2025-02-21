@@ -1,19 +1,19 @@
 import java.time.LocalDate;
 
 public class Transaccion {
-    private Usuario usuarioDestinatario;
-    private Usuario usuarioEmisor;
+    private BilleteraVirtual usuarioDestinatario;
+    private BilleteraVirtual usuarioEmisor;
     private LocalDate fecha;
     private CategoriaTransaccion categoriaTransaccion;
 
-    public Transaccion(Usuario usuarioDestinatario, Usuario usuarioEmisor, LocalDate fecha, CategoriaTransaccion categoriaTransaccion) {
+    public Transaccion(BilleteraVirtual usuarioDestinatario, BilleteraVirtual usuarioEmisor, LocalDate fecha, CategoriaTransaccion categoriaTransaccion) {
         this.usuarioDestinatario = usuarioDestinatario;
         this.usuarioEmisor = usuarioEmisor;
         this.fecha = fecha;
         this.categoriaTransaccion = categoriaTransaccion;
     }
 
-    public Usuario getUsuarioDestinatario() {
+    public BilleteraVirtual getUsuarioDestinatario() {
         return usuarioDestinatario;
     }
 
@@ -21,7 +21,7 @@ public class Transaccion {
         this.usuarioDestinatario = usuarioDestinatario;
     }
 
-    public Usuario getUsuarioEmisor() {
+    public BilleteraVirtual getUsuarioEmisor() {
         return usuarioEmisor;
     }
 
