@@ -1,14 +1,16 @@
 import java.time.LocalDate;
 
 public class Transaccion {
-    private BilleteraVirtual usuarioDestinatario;
-    private BilleteraVirtual usuarioEmisor;
+    String id;
+    private BilleteraVirtual destino;
+    private BilleteraVirtual origen;
     private LocalDate fecha;
     private CategoriaTransaccion categoriaTransaccion;
 
-    public Transaccion(BilleteraVirtual usuarioDestinatario, BilleteraVirtual usuarioEmisor, LocalDate fecha, CategoriaTransaccion categoriaTransaccion) {
-        this.usuarioDestinatario = usuarioDestinatario;
-        this.usuarioEmisor = usuarioEmisor;
+    public Transaccion(String id,BilleteraVirtual destino, BilleteraVirtual origen, LocalDate fecha, CategoriaTransaccion categoriaTransaccion) {
+        this.id = id;
+        this.destino = destino;
+        this.origen = origen;
         this.fecha = fecha;
         this.categoriaTransaccion = categoriaTransaccion;
     }
@@ -17,17 +19,15 @@ public class Transaccion {
         return usuarioDestinatario;
     }
 
-    public void setUsuarioDestinatario(Usuario usuarioDestinatario) {
-        this.usuarioDestinatario = usuarioDestinatario;
+    public void setDestino(BilleteraVirtual destino) {
+        this.destino = destino;
     }
 
     public BilleteraVirtual getUsuarioEmisor() {
-        return usuarioEmisor;
+        return origen;
     }
 
-    public void setUsuarioEmisor(Usuario usuarioEmisor) {
-        this.usuarioEmisor = usuarioEmisor;
-    }
+    public void setOrigen(BilleteraVirtual origen) {this.origen = origen;}
 
     public LocalDate getFecha() {
         return fecha;
