@@ -9,11 +9,15 @@ public class BilleteraVirtual {
         this.usuario = usuario;
     }
 
+
     public int getNumeroAleatorio() {
         return numeroAleatorio;
     }
 
     public void setNumeroAleatorio(int numeroAleatorio) {
+        for (int i = 1; i >= 1; i++) {
+            numeroAleatorio += i;
+        }
         this.numeroAleatorio = numeroAleatorio;
     }
 
