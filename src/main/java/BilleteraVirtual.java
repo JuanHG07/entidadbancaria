@@ -5,11 +5,26 @@ public class BilleteraVirtual {
     private float saldo;
     private Usuario usuario;
     public LinkedList<Transaccion> transacciones;
+    public Banco banco;
 
     public BilleteraVirtual(String numeroAleatorio, float saldo, Usuario usuario) {
         this.numeroAleatorio = numeroAleatorio;
         this.saldo = saldo;
         this.usuario = usuario;
+    }
+
+    public void consultarSaldo(String cedula, String contrasenia) throws Exception{
+        BilleteraVirtual billeteraVirtual = banco.bucarBilletera(cedula, contrasenia);
+        if(billeteraVirtual != null){
+            imprimir(billeteraVirtual.toString());
+        }
+        else{
+            throw new Exception("No se encontro la billetera buscada");
+        }
+    }
+
+    public void imprimir(String mensaje){
+        System.out.println(mensaje);
     }
 
     public LinkedList<Transaccion> getTransacciones() {
