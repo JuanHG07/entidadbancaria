@@ -66,7 +66,7 @@ public class Banco {
         }
     }
 
-    public BilleteraVirtual validarBilletera(int numeroAleatorio) throws Exception{
+    public BilleteraVirtual validarBilletera(int numeroAleatorio){
         return billeterasVirtuales
                 .stream()
                 .filter(e -> e.getNumeroAleatorio() == numeroAleatorio)
@@ -76,14 +76,21 @@ public class Banco {
 
 
     public void consultarSaldo(String cedula, String contrasenia) throws Exception{
-        BilleteraVirtual billeteraVirtual = validarBilletera(Integer.parseInt(contrasenia));
+        BilleteraVirtual billeteraVirtual = bucarBilletera(cedula, contrasenia);
         if(billeteraVirtual != null){
             imprimir(billeteraVirtual.toString());
         }
         else{
             throw new Exception("No se encotro la billetera buscada");
-
         }
+    }
+
+    public BilleteraVirtual bucarBilletera(String cedula, String contrasenia) {
+        return billeterasVirtuales
+                .stream()
+                .filter(e -> e.getUsuario().getCedula().equals(cedula)&& e.getUsuario().getContrasenia().equals(contrasenia))
+                .findFirst()
+                .orElse(null);
     }
 
     //Metodos de transaccion(Faltan todos)
