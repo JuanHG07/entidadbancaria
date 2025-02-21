@@ -1,18 +1,37 @@
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Transaccion {
-    String id;
-    private BilleteraVirtual destino;
+    private String id;
     private BilleteraVirtual origen;
-    private LocalDate fecha;
-    private CategoriaTransaccion categoriaTransaccion;
+    private BilleteraVirtual destino;
+    private LocalDateTime fecha;
+    private float monto;
+    private CategoriaTransaccion categoria;
+    final private float costo = 200;
 
-    public Transaccion(String id,BilleteraVirtual destino, BilleteraVirtual origen, LocalDate fecha, CategoriaTransaccion categoriaTransaccion) {
+    public Transaccion(String id, BilleteraVirtual origen, BilleteraVirtual destino, LocalDateTime fecha, float monto, CategoriaTransaccion categoria) {
         this.id = id;
-        this.destino = destino;
         this.origen = origen;
+        this.destino = destino;
         this.fecha = fecha;
-        this.categoriaTransaccion = categoriaTransaccion;
+        this.monto = monto;
+        this.categoria = categoria;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public BilleteraVirtual getOrigen() {
+        return origen;
+    }
+
+    public void setOrigen(BilleteraVirtual origen) {
+        this.origen = origen;
     }
 
     public BilleteraVirtual getDestino() {
@@ -23,30 +42,44 @@ public class Transaccion {
         this.destino = destino;
     }
 
-    public BilleteraVirtual getUsuarioEmisor() {
-        return origen;
-    }
-
-    public void setOrigen(BilleteraVirtual origen) {this.origen = origen;}
-
-    public LocalDate getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 
-    public CategoriaTransaccion getCategoriaTransaccion() {
-        return categoriaTransaccion;
+    public float getMonto() {
+        return monto;
     }
 
-    public void setCategoriaTransaccion(CategoriaTransaccion categoriaTransaccion) {
-        this.categoriaTransaccion = categoriaTransaccion;
+    public void setMonto(float monto) {
+        this.monto = monto;
+    }
+
+    public CategoriaTransaccion getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaTransaccion categoria) {
+        this.categoria = categoria;
+    }
+
+    public float getCosto() {
+        return costo;
     }
 
     @Override
     public String toString() {
-        return "Transaccion{" + "destino=" + destino + ", origen=" + origen + ", fecha=" + fecha + ", categoriaTransaccion=" + categoriaTransaccion + '}';
+        return "Transaccion{" +
+                "id='" + id + '\'' +
+                ", origen=" + origen +
+                ", destino=" + destino +
+                ", fecha=" + fecha +
+                ", monto=" + monto +
+                ", categoria=" + categoria +
+                ", costo=" + costo +
+                '}';
     }
 }
