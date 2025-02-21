@@ -69,7 +69,7 @@ public class Banco {
     public BilleteraVirtual validarBilletera(String numeroAleatorio){
         return billeterasVirtuales
                 .stream()
-                .filter(e -> e.getNumeroAleatorio() == numeroAleatorio)
+                .filter(e -> e.getNumeroAleatorio().equals(numeroAleatorio))
                 .findFirst()
                 .orElse(null);
     }
