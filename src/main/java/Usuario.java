@@ -54,26 +54,17 @@ public class Usuario {
         this.contrasenia = contrasenia;
     }
 
-    public void recargarBilletera(float ingreso) {
-
-    }
-
-
-
-
-        // Método para recargar la billetera
-        public void recargarBilletera(float ingreso) {
-            private float saldo; // Variable para almacenar el saldo actual
-            if (ingreso <= 0) {
-                throw new IllegalArgumentException("El monto a recargar debe ser positivo");
-            }
-            saldo += ingreso;
-            return; saldo;
+    public void recargarBilletera(float ingreso, BilleteraVirtual billetera) {
+        if (ingreso <= 0) {
+            throw new IllegalArgumentException("El monto de recarga debe ser mayor a 0");
+        } else {
+            billetera.setSaldo(billetera.getSaldo() + ingreso);
         }
+    }
 
 
     }
-}
+
 
 
 
