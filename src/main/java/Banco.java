@@ -1,5 +1,6 @@
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Banco {
     public String nombre;
@@ -64,6 +65,16 @@ public class Banco {
         }else{
             billeterasVirtuales.add(billeteraVirtual);
         }
+    }
+
+    public String generarNumeroAleatorio(int longitud){
+        Random random = new Random();
+        StringBuilder numero = new StringBuilder();
+        for (int i = 0; i < longitud; i++) {
+            int digito = random.nextInt(10);
+            numero.append(digito);
+        }
+        return numero.toString();
     }
 
     public BilleteraVirtual validarBilletera(String numeroAleatorio){
