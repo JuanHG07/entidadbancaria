@@ -80,6 +80,10 @@ public class Banco {
         if(billeteraVirtual != null){
             imprimir(billeteraVirtual.toString());
         }
+        else{
+            throw new Exception("No se encotro la billetera buscada");
+
+        }
     }
 
     //Metodos de transaccion(Faltan todos)
