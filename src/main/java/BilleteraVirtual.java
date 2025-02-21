@@ -14,7 +14,7 @@ public class BilleteraVirtual {
         return numeroAleatorio;
     }
 
-    public void setNumeroAleatorio(String numeroAleatorio) { 
+    public void setNumeroAleatorio(String numeroAleatorio) {
         this.numeroAleatorio = numeroAleatorio;
     }
 
