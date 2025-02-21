@@ -66,7 +66,7 @@ public class Banco {
         }
     }
 
-    public BilleteraVirtual validarBilletera(int numeroAleatorio){
+    public BilleteraVirtual validarBilletera(String numeroAleatorio){
         return billeterasVirtuales
                 .stream()
                 .filter(e -> e.getNumeroAleatorio() == numeroAleatorio)

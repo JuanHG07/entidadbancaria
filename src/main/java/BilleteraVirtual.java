@@ -1,23 +1,23 @@
 public class BilleteraVirtual {
-    private int numeroAleatorio;
+    private String numeroAleatorio;
     private float saldo;
     private Usuario usuario;
 
-    public BilleteraVirtual(int numeroAleatorio, float saldo, Usuario usuario) {
+    public BilleteraVirtual(String numeroAleatorio, float saldo, Usuario usuario) {
         this.numeroAleatorio = numeroAleatorio;
         this.saldo = saldo;
         this.usuario = usuario;
     }
 
 
-    public int getNumeroAleatorio() {
+    public String getNumeroAleatorio() {
         return numeroAleatorio;
     }
 
-    public void setNumeroAleatorio(int numeroAleatorio) {
-        for (int i = 1; i >= 1; i++) {
+    public void setNumeroAleatorio(String numeroAleatorio) {
+        /*for (int i = 1; i >= 1; i++) {
             numeroAleatorio += i;
-        }
+        }*/
         this.numeroAleatorio = numeroAleatorio;
     }
 
