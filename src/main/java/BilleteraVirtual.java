@@ -52,4 +52,15 @@ public class BilleteraVirtual {
                 ", usuario=" + usuario +
                 '}';
     }
+
+    public void recargarBilletera(float ingreso, BilleteraVirtual billetera) {
+        if (ingreso <= 0) {
+            throw new IllegalArgumentException("El monto de recarga debe ser mayor a 0");
+        } else {
+            billetera.setSaldo(billetera.getSaldo() + ingreso);
+        }
+    }
+
+
+
 }
