@@ -83,17 +83,6 @@ public class Banco {
                 .orElse(null);
     }
 
-
-    public void consultarSaldo(String cedula, String contrasenia) throws Exception{
-        BilleteraVirtual billeteraVirtual = bucarBilletera(cedula, contrasenia);
-        if(billeteraVirtual != null){
-            imprimir(billeteraVirtual.toString());
-        }
-        else{
-            throw new Exception("No se encontro la billetera buscada");
-        }
-    }
-
     public BilleteraVirtual bucarBilletera(String cedula, String contrasenia) {
         return billeterasVirtuales
                 .stream()
