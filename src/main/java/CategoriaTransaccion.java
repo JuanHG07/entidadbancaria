@@ -1,4 +1,4 @@
-public enum categoriaTransaccion {
+public enum CategoriaTransaccion {
 
     VIAJES,
     FACTURAS,

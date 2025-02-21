@@ -15,8 +15,8 @@ public class Transaccion {
         this.categoriaTransaccion = categoriaTransaccion;
     }
 
-    public BilleteraVirtual getUsuarioDestinatario() {
-        return usuarioDestinatario;
+    public BilleteraVirtual getDestino() {
+        return destino;
     }
 
     public void setDestino(BilleteraVirtual destino) {
@@ -47,6 +47,6 @@ public class Transaccion {
 
     @Override
     public String toString() {
-        return "Transaccion{" + "usuarioDestinatario=" + usuarioDestinatario + ", usuarioEmisor=" + usuarioEmisor + ", fecha=" + fecha + ", categoriaTransaccion=" + categoriaTransaccion + '}';
+        return "Transaccion{" + "destino=" + destino + ", origen=" + origen + ", fecha=" + fecha + ", categoriaTransaccion=" + categoriaTransaccion + '}';
     }
 }
