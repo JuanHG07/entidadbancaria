@@ -57,6 +57,22 @@ public class Usuario {
     public void recargarBilletera(float ingreso) {
 
     }
+
+
+
+
+        // Método para recargar la billetera
+        public void recargarBilletera(float ingreso) {
+            private float saldo; // Variable para almacenar el saldo actual
+            if (ingreso <= 0) {
+                throw new IllegalArgumentException("El monto a recargar debe ser positivo");
+            }
+            saldo += ingreso;
+            return; saldo;
+        }
+
+
+    }
 }
 
 
