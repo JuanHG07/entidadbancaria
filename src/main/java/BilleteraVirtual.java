@@ -1,7 +1,10 @@
+import java.util.LinkedList;
+
 public class BilleteraVirtual {
     private String numeroAleatorio;
     private float saldo;
     private Usuario usuario;
+    public LinkedList<Transaccion> transacciones;
 
     public BilleteraVirtual(String numeroAleatorio, float saldo, Usuario usuario) {
         this.numeroAleatorio = numeroAleatorio;
@@ -9,6 +12,13 @@ public class BilleteraVirtual {
         this.usuario = usuario;
     }
 
+    public LinkedList<Transaccion> getTransacciones() {
+        return transacciones;
+    }
+
+    public void setTransacciones(LinkedList<Transaccion> transacciones) {
+        this.transacciones = transacciones;
+    }
 
     public String getNumeroAleatorio() {
         return numeroAleatorio;

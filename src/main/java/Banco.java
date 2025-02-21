@@ -5,13 +5,11 @@ import java.util.Random;
 public class Banco {
     public String nombre;
     public LinkedList<Usuario> usuarios;
-    public LinkedList<Transaccion> transacciones;
     public LinkedList<BilleteraVirtual> billeterasVirtuales;
 
-    public Banco(String nombre, LinkedList<Usuario> usuarios, LinkedList<Transaccion> transacciones, LinkedList<BilleteraVirtual> billeterasVirtuales) {
+    public Banco(String nombre, LinkedList<Usuario> usuarios, LinkedList<BilleteraVirtual> billeterasVirtuales) {
         this.nombre = nombre;
         this.usuarios = usuarios;
-        this.transacciones = transacciones;
         this.billeterasVirtuales = billeterasVirtuales;
     }
 
@@ -126,14 +124,6 @@ public class Banco {
         this.usuarios = usuarios;
     }
 
-    public LinkedList<Transaccion> getTransacciones() {
-        return transacciones;
-    }
-
-    public void setTransacciones(LinkedList<Transaccion> transacciones) {
-        this.transacciones = transacciones;
-    }
-
     public LinkedList<BilleteraVirtual> getBilleterasVirtuales() {
         return billeterasVirtuales;
     }
@@ -144,6 +134,6 @@ public class Banco {
 
     @Override
     public String toString() {
-        return "Banco{" + "nombre='" + nombre + '\'' + ", usuarios=" + usuarios + ", transacciones=" + transacciones + ", billeterasVirtuales=" + billeterasVirtuales + '}';
+        return "Banco{" + "nombre='" + nombre + '\'' + ", usuarios=" + usuarios + ", billeterasVirtuales=" + billeterasVirtuales + '}';
     }
 }
