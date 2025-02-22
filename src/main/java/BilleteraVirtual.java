@@ -72,13 +72,15 @@ public class BilleteraVirtual {
     public void recargarBilletera(float ingreso, BilleteraVirtual billetera) {
         if (ingreso <= 0) {
             throw new IllegalArgumentException("El monto de recarga debe ser mayor a 0");
-        } else {
-            billetera.setSaldo(billetera.getSaldo() + ingreso);
         }
+        billetera.setSaldo(billetera.getSaldo() + ingreso);
     }
 
-
     public LinkedList<Transaccion> consultarTransaccionesPeriodo(LocalDate periodo) {
+        if (transacciones.isEmpty()) {
+            throw new IllegalStateException("No hay transacciones registradas");
+        }
+
         LinkedList<Transaccion> transaccionesFiltradasPeriodo = new LinkedList<>();
 
         for (Transaccion t : transacciones) {
@@ -90,24 +92,32 @@ public class BilleteraVirtual {
         return transaccionesFiltradasPeriodo;
     }
 
-
     public LinkedList<Transaccion> calcularPeriodo(LocalDate fecha1, LocalDate fecha2) {
-        LinkedList<Transaccion> transaccionesCalcularPerioro = new LinkedList<>();
+        if (transacciones.isEmpty()) {
+            throw new IllegalStateException("No hay transacciones registradas");
+        }
+        if (fecha1 == null || fecha2 == null || fecha1.isAfter(fecha2)) {
+            throw new IllegalArgumentException("Las fechas deben ser válidas y fecha1 debe ser anterior o igual a fecha2");
+        }
+
+        LinkedList<Transaccion> transaccionesCalcularPeriodo = new LinkedList<>();
 
         for (Transaccion t : transacciones) {
             LocalDate fechaTransaccion = t.getFecha().toLocalDate();
             if ((fechaTransaccion.isAfter(fecha1) || fechaTransaccion.equals(fecha1)) &&
                     (fechaTransaccion.isBefore(fecha2) || fechaTransaccion.equals(fecha2))) {
-                transaccionesCalcularPerioro.add(t);
+                transaccionesCalcularPeriodo.add(t);
             }
         }
 
-        return transaccionesCalcularPerioro;
+        return transaccionesCalcularPeriodo;
     }
 
-
-
     public String calcularPorcentajeGastosIngresos(LocalDate periodo) {
+        if (transacciones.isEmpty()) {
+            throw new IllegalStateException("No hay transacciones registradas");
+        }
+
         float ingresos = 0;
         float gastos = 0;
 
@@ -115,10 +125,14 @@ public class BilleteraVirtual {
             if (t.getFecha().toLocalDate().equals(periodo)) {
                 if (t.getDestino().equals(this)) {
                     ingresos += t.getMonto();
-                } else if (t.getOrigen().equals(this)) { 
+                } else if (t.getOrigen().equals(this)) {
                     gastos += t.getMonto();
                 }
             }
+        }
+
+        if (ingresos == 0 && gastos == 0) {
+            throw new IllegalStateException("No hay ingresos ni gastos en el período seleccionado");
         }
 
         float total = ingresos + gastos;

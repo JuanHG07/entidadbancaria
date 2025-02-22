@@ -5,6 +5,7 @@ public enum CategoriaTransaccion {
     GASOLINA,
     ROPA,
     COMIDA,
+    INGRESOS
 
 
     }
