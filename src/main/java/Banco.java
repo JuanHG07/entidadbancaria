@@ -91,8 +91,6 @@ public class Banco {
                 .orElse(null);
     }
 
-    //Metodos de transaccion(Faltan todos)
-
     public void imprimir(String mensaje){
         System.out.println(mensaje);
     }
