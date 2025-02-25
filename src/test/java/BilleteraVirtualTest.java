@@ -20,6 +20,13 @@ public class BilleteraVirtualTest {
     }
 
     @Test
+    void testRecargarBilletera() {
+        billetera.recargarBilletera(500);
+        assertEquals(1500, billetera.getSaldo());
+        assertThrows(IllegalArgumentException.class, () -> billetera.recargarBilletera(-1));
+    }
+
+    @Test
     void testConsultarSaldo() {
         assertEquals(1000, billetera.getSaldo());
     }

@@ -69,11 +69,11 @@ public class BilleteraVirtual {
                 '}';
     }
 
-    public void recargarBilletera(float ingreso, BilleteraVirtual billetera) {
+    public void recargarBilletera(float ingreso) {
         if (ingreso <= 0) {
             throw new IllegalArgumentException("El monto de recarga debe ser mayor a 0");
         }
-        billetera.setSaldo(billetera.getSaldo() + ingreso);
+        this.setSaldo(saldo + ingreso);
     }
 
     public LinkedList<Transaccion> consultarTransaccionesPeriodo(LocalDate periodo) {
