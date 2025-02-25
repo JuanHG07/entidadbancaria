@@ -73,13 +73,26 @@ public class BancoTest {
         Usuario usuario = new Usuario("Gabriel", "Pereira", "1080", "Gabriel@gmail.com", "789");
         BilleteraVirtual billeteraVirtual = new BilleteraVirtual("5", 100000.00f,usuario);
 
-        assertDoesNotThrow( () -> {
-            banco.crearBilleteraVirtual(billeteraVirtual);
-        } );
+        assertDoesNotThrow( () -> {banco.crearBilleteraVirtual(billeteraVirtual);} );
 
         BilleteraVirtual billeteraAgregada = banco.validarBilletera("5");
         assertNotNull(billeteraAgregada);
 
+    }
+
+    @Test
+    public void buscarBilleteraTest(){
+        BilleteraVirtual billeteraVirtual = banco.bucarBilletera("1080", "789");
+
+        assertNotNull(billeteraVirtual);
+        assertEquals("Gabriel", billeteraVirtual.getUsuario().getNombre());
+    }
+
+    @Test
+    public void generarNumeroTest(){
+        String numAleatorio = banco.generarNumeroAleatorio(5);
+
+        assertEquals(5, numAleatorio.length());
     }
 
 }
