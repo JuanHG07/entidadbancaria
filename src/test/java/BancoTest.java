@@ -16,8 +16,21 @@ public class BancoTest {
         usuarios.add(new Usuario("Maria", "Calarca", "2304", "Maria@gmail.com", "234"));
         usuarios.add(new Usuario("Luis", "LaTebaida", "1090", "Luis@gmail.com", "345"));
 
+        Usuario usuarioGabriel = new Usuario("Gabriel", "Pereira", "1080", "Gabriel@gmail.com", "789");
+        usuarios.add(usuarioGabriel);
+
+        BilleteraVirtual billeteraGabriel = new BilleteraVirtual("1", 100000.00f, usuarioGabriel);
+        billeteras.add(billeteraGabriel);
+
         banco = new Banco("Bancolombia", usuarios, billeteras);
         banco.setUsuarios(usuarios);
+
+
+
+
+
+
+
     }
     @Test
     public void crearUsuarioTest(){
@@ -81,12 +94,13 @@ public class BancoTest {
     }
 
     @Test
-    public void buscarBilleteraTest(){
-        BilleteraVirtual billeteraVirtual = banco.bucarBilletera("1080", "789");
+    public void buscarBilleteraTest() {
+        BilleteraVirtual billeteraVirtual = banco.buscarBilletera("1080", "789");
 
         assertNotNull(billeteraVirtual);
         assertEquals("Gabriel", billeteraVirtual.getUsuario().getNombre());
     }
+
 
     @Test
     public void generarNumeroTest(){
@@ -95,4 +109,15 @@ public class BancoTest {
         assertEquals(5, numAleatorio.length());
     }
 
+    @Test
+    public void validarBilleteraTest() throws Exception {
+        banco.crearBilleteraVirtual(new BilleteraVirtual("10", 50000.00f, new Usuario("Carlos", "Bogotá", "5678", "carlos@gmail.com", "abc123")));
+        assertNotNull(banco.validarBilletera("10"));
+    }
+
+
+
 }
+
+
+

@@ -15,7 +15,7 @@ public class BilleteraVirtual {
     }
 
     public void consultarSaldo(String cedula, String contrasenia) throws Exception{
-        BilleteraVirtual billeteraVirtual = banco.bucarBilletera(cedula, contrasenia);
+        BilleteraVirtual billeteraVirtual = banco.buscarBilletera(cedula, contrasenia);
         if(billeteraVirtual != null){
             imprimir(billeteraVirtual.toString());
         }

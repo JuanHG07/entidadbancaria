@@ -83,10 +83,12 @@ public class Banco {
                 .orElse(null);
     }
 
-    public BilleteraVirtual bucarBilletera(String cedula, String contrasenia) {
+
+
+    public BilleteraVirtual buscarBilletera(String cedula, String contrasenia) {
         return billeterasVirtuales
                 .stream()
-                .filter(e -> e.getUsuario().getCedula().equals(cedula)&& e.getUsuario().getContrasenia().equals(contrasenia))
+                .filter(e -> e.getUsuario().getCedula().equals(cedula) && e.getUsuario().getContrasenia().equals(contrasenia))
                 .findFirst()
                 .orElse(null);
     }
