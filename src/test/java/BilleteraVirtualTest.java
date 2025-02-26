@@ -20,6 +20,11 @@ public class BilleteraVirtualTest {
     }
 
     @Test
+    void testCrearTransaccion() {
+
+    }
+
+    @Test
     void testRecargarBilletera() {
         billetera.recargarBilletera(500);
         assertEquals(1500, billetera.getSaldo());

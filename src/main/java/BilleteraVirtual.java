@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public class BilleteraVirtual {
@@ -7,6 +8,7 @@ public class BilleteraVirtual {
     private Usuario usuario;
     public LinkedList<Transaccion> transacciones;
     public Banco banco;
+    private final int longitud = 5;
 
     public BilleteraVirtual(String numeroAleatorio, float saldo, Usuario usuario) {
         this.numeroAleatorio = numeroAleatorio;
@@ -67,6 +69,27 @@ public class BilleteraVirtual {
                 ", saldo=" + saldo +
                 ", usuario=" + usuario +
                 '}';
+    }
+
+    public Transaccion crearTransaccion(BilleteraVirtual billeteraOrigen,BilleteraVirtual billeteraDestino, float monto, CategoriaTransaccion categoria) throws Exception{
+        if (monto < 0) {
+            throw new Exception("Monto negativo");
+        } else if (billeteraOrigen.getSaldo() < monto) {
+            throw new Exception("Saldo insuficiente");
+
+        } else if (billeteraDestino == null) {
+            throw new Exception("Billetera nulas");
+        } else {
+            Transaccion transaccion = new Transaccion(banco.generarNumeroAleatorio(longitud), billeteraOrigen, billeteraDestino, LocalDateTime.now(), monto, categoria);
+            realizarTransaccion(billeteraOrigen, billeteraDestino, monto);
+            transacciones.add(transaccion);
+            return transaccion;
+        }
+    }
+
+    public void realizarTransaccion(BilleteraVirtual origen, BilleteraVirtual destino, float monto) {
+        origen.setSaldo(origen.getSaldo() - monto);
+        destino.setSaldo(destino.getSaldo() + monto);
     }
 
     public void recargarBilletera(float ingreso) {
