@@ -32,6 +32,16 @@ public class BilleteraVirtualTest {
         Transaccion transaccionEsperada = new Transaccion(transaccion.getId(),billeteraOrigen, billeteraDestino, LocalDateTime.now(),5000.00f, CategoriaTransaccion.COMIDA);
         assertEquals(transaccionEsperada.getId(), transaccion.getId());
 
+    }
+
+    @Test
+    void testRealizarTransacciones () throws Exception {
+        BilleteraVirtual billeteraOrigen = new BilleteraVirtual("987654321", 5000, usuario, banco);
+        BilleteraVirtual billeteraDestino = new BilleteraVirtual("987554321", 1000, usuario, banco);
+        Transaccion transaccion = billetera.crearTransaccion(billeteraOrigen, billeteraDestino, 5000.00f, CategoriaTransaccion.COMIDA );
+        Transaccion transaccionEsperada = new Transaccion(transaccion.getId(),billeteraOrigen, billeteraDestino, LocalDateTime.now(),5000.00f, CategoriaTransaccion.COMIDA);
+        assertEquals(0.00f, billeteraOrigen.getSaldo());
+        assertEquals(6000.00f, billeteraDestino.getSaldo());
 
     }
 
