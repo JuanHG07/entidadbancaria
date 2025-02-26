@@ -8,19 +8,30 @@ import java.util.LinkedList;
 
 public class BilleteraVirtualTest {
     private BilleteraVirtual billetera;
+    private Banco banco;
     private Usuario usuario;
     private LinkedList<Transaccion> transacciones;
+    private LinkedList<Usuario> usuarios;
+
 
     @BeforeEach
     void setUp() {
         usuario = new Usuario("Juan Perez", "Calle 123", "12345678", "juan@example.com", "password");
-        billetera = new BilleteraVirtual("987654321", 1000, usuario);
+        billetera = new BilleteraVirtual("987654321", 1000, usuario,banco);
         transacciones = new LinkedList<>();
+        banco = new Banco("Bancolombia", usuarios,null);
         billetera.setTransacciones(transacciones);
     }
 
     @Test
-    void testCrearTransaccion() {
+    void testCrearTransaccion () throws Exception {
+
+        BilleteraVirtual billeteraOrigen = new BilleteraVirtual("987654321", 5000, usuario, banco);
+        BilleteraVirtual billeteraDestino = new BilleteraVirtual("987554321", 1000, usuario, banco);
+        Transaccion transaccion = billetera.crearTransaccion(billeteraOrigen, billeteraDestino, 5000.00f, CategoriaTransaccion.COMIDA );
+        Transaccion transaccionEsperada = new Transaccion(transaccion.getId(),billeteraOrigen, billeteraDestino, LocalDateTime.now(),5000.00f, CategoriaTransaccion.COMIDA);
+        assertEquals(transaccionEsperada.getId(), transaccion.getId());
+
 
     }
 

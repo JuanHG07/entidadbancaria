@@ -19,7 +19,7 @@ public class BancoTest {
         Usuario usuarioGabriel = new Usuario("Gabriel", "Pereira", "1080", "Gabriel@gmail.com", "789");
         usuarios.add(usuarioGabriel);
 
-        BilleteraVirtual billeteraGabriel = new BilleteraVirtual("1", 100000.00f, usuarioGabriel);
+        BilleteraVirtual billeteraGabriel = new BilleteraVirtual("1", 100000.00f, usuarioGabriel,banco);
         billeteras.add(billeteraGabriel);
 
         banco = new Banco("Bancolombia", usuarios, billeteras);
@@ -84,7 +84,7 @@ public class BancoTest {
     public void crearBilleteraTest(){
 
         Usuario usuario = new Usuario("Gabriel", "Pereira", "1080", "Gabriel@gmail.com", "789");
-        BilleteraVirtual billeteraVirtual = new BilleteraVirtual("5", 100000.00f,usuario);
+        BilleteraVirtual billeteraVirtual = new BilleteraVirtual("5", 100000.00f,usuario,banco);
 
         assertDoesNotThrow( () -> {banco.crearBilleteraVirtual(billeteraVirtual);} );
 
@@ -111,7 +111,7 @@ public class BancoTest {
 
     @Test
     public void validarBilleteraTest() throws Exception {
-        banco.crearBilleteraVirtual(new BilleteraVirtual("10", 50000.00f, new Usuario("Carlos", "Bogotá", "5678", "carlos@gmail.com", "abc123")));
+        banco.crearBilleteraVirtual(new BilleteraVirtual("10", 50000.00f, new Usuario("Carlos", "Bogotá", "5678", "carlos@gmail.com", "abc123"),banco));
         assertNotNull(banco.validarBilletera("10"));
     }
 

@@ -10,10 +10,12 @@ public class BilleteraVirtual {
     public Banco banco;
     private final int longitud = 5;
 
-    public BilleteraVirtual(String numeroAleatorio, float saldo, Usuario usuario) {
+    public BilleteraVirtual(String numeroAleatorio, float saldo, Usuario usuario, Banco banco) {
         this.numeroAleatorio = numeroAleatorio;
         this.saldo = saldo;
         this.usuario = usuario;
+        this.banco = banco;
+        this.transacciones = new LinkedList<>();
     }
 
     public void consultarSaldo(String cedula, String contrasenia) throws Exception{
@@ -80,9 +82,10 @@ public class BilleteraVirtual {
         } else if (billeteraDestino == null) {
             throw new Exception("Billetera nulas");
         } else {
-            Transaccion transaccion = new Transaccion(banco.generarNumeroAleatorio(longitud), billeteraOrigen, billeteraDestino, LocalDateTime.now(), monto, categoria);
+            Transaccion transaccion = new Transaccion(billeteraOrigen.getBanco().generarNumeroAleatorio(longitud), billeteraOrigen, billeteraDestino, LocalDateTime.now(), monto, categoria);
             realizarTransaccion(billeteraOrigen, billeteraDestino, monto);
-            transacciones.add(transaccion);
+            billeteraOrigen.getTransacciones().add(transaccion);
+            billeteraDestino.getTransacciones().add(transaccion);
             return transaccion;
         }
     }
@@ -166,5 +169,11 @@ public class BilleteraVirtual {
     }
 
 
+    public Banco getBanco() {
+        return banco;
+    }
 
+    public void setBanco(Banco banco) {
+        this.banco = banco;
+    }
 }
